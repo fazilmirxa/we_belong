@@ -84,20 +84,64 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Email signup form handling
   const emailForm = document.querySelector('.signup-form');
-  if (emailForm) {
-    emailForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const emailInput = document.getElementById('email-input');
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailInput = document.getElementById('email-input');
+  const signupButton = document.getElementById('signup-button');
+  const signupMessage = document.getElementById('signup-message');
+
+  if (emailForm && emailInput && signupButton && signupMessage) {
+    emailForm.addEventListener('submit', async function(e) {
+      e.preventDefault(); // Prevent default form submission
+
+      const email = emailInput.value.trim();
       
-      if (emailInput.value.trim() !== '' && emailPattern.test(emailInput.value)) {
-        alert('Thank you for signing up! We\'ll keep you updated on all We Belong events.');
-        emailInput.value = '';
-      } else {
-        alert('Please enter a valid email address.');
+      // Basic client-side validation (HTML5 pattern attribute also helps)
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (email === '' || !emailPattern.test(email)) {
+        signupMessage.textContent = 'Please enter a valid email address.';
+        signupMessage.className = 'mt-4 text-sm text-red-600'; // Style for error
+        return;
+      }
+
+      // Disable button and show loading message
+      signupButton.disabled = true;
+      signupButton.textContent = 'Signing Up...';
+      signupMessage.textContent = ''; // Clear previous messages
+
+      try {
+        // Send the email to your backend API
+        // Replace '/api/subscribe' with your actual backend endpoint
+        const response = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: email }),
+        });
+
+        const responseData = await response.json();
+
+        if (response.ok) {
+          signupMessage.textContent = responseData.message || 'Thank you for subscribing!';
+          signupMessage.className = 'mt-4 text-sm text-green-600'; // Style for success
+          emailInput.value = ''; // Clear the input field
+        } else {
+          // Handle errors from the backend
+          signupMessage.textContent = responseData.message || 'Subscription failed. Please try again.';
+          signupMessage.className = 'mt-4 text-sm text-red-600'; // Style for error
+        }
+      } catch (error) {
+        // Handle network errors or other issues with the fetch call
+        console.error('Subscription error:', error);
+        signupMessage.textContent = 'An error occurred. Please try again later.';
+        signupMessage.className = 'mt-4 text-sm text-red-600'; // Style for error
+      } finally {
+        // Re-enable the button
+        signupButton.disabled = false;
+        signupButton.textContent = 'Sign Up';
       }
     });
   }
+  //email handling
   
   // Toggle animation classes for testimonials
   const testimonials = document.querySelectorAll('.testimonial-carousel > div');

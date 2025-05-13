@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Website</title>
+  <!-- <link href="/src/styles.css" rel="stylesheet"> -->
+  <title>We Belong</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -46,24 +47,26 @@
     }
   </script>
   <style>
+    /* @import "tailwindcss"; */
+
     /* Custom Font Loading */
     @font-face {
       font-family: 'Font1';
-      src: url('/fonts/font1.ttf') format('truetype');
+      src: url('assets/fonts/BebasNeue-Regular.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
     }
 
     @font-face {
       font-family: 'Font2';
-      src: url('/fonts/font2.ttf') format('truetype');
+      src: url('assets/fonts/Chillax-Variable.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
     }
 
     @font-face {
       font-family: 'Font3';
-      src: url('/fonts/font3.ttf') format('truetype');
+      src: url('assets/fonts/Trirong-Italic.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
     }
@@ -74,49 +77,51 @@
 
 <body class="font-['Segoe_UI',Tahoma,Geneva,Verdana,sans-serif] overflow-x-hidden w-full scroll-smooth">
   <!-- Navigation Bar -->
-  <div class="w-full h-20 flex justify-center">
-    <nav
-      class="fixed w-[95%] h-20 mx-auto mt-2.5 px-16 py-4 bg-white rounded-b-[20px] flex justify-between items-center z-[999] transition-all duration-400 shadow-sm transform translate-y-0">
-      <div class="nav-logo">
-        <img src="assets/images/Nav-logo.png" alt="Logo" class="h-[60px]">
+  <!-- <div class="w-full h-20 flex justify-center"> -->
+  <nav
+    class="fixed w-[95%] h-20 mx-auto mt-2.5 px-16 py-4 bg-white rounded-b-[20px] flex justify-between items-center z-[999] transition-all duration-400 shadow-sm transform translate-y-0">
+    <div class="nav-logo">
+      <img src="assets/images/Nav-logo.png" alt="Logo" class="h-[60px]">
+    </div>
+    <ul
+      class="
+  hidden flex flex-col absolute w-full bg-white left-0 top-full shadow-lg py-2 z-[1000] md:flex-row md:relative md:w-auto md:bg-transparent md:shadow-none md:py-0 md:z-auto list-none gap-y-2 md:gap-x-8 ">
+      <li><a href="#"
+          class="block px-4 py-3 text-[#555] text-base font-medium transition-all duration-300 hover:text-primary hover:bg-gray-100 md:px-0 md:py-0 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary">Home</a>
+      </li>
+      <li><a href="#"
+          class="block px-4 py-3 text-[#555] text-base font-medium transition-all duration-300 hover:text-primary hover:bg-gray-100 md:px-0 md:py-0 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary">About</a>
+      </li>
+      <li><a href="#"
+          class="block px-4 py-3 text-[#555] text-base font-medium transition-all duration-300 hover:text-primary hover:bg-gray-100 md:px-0 md:py-0 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary">Services</a>
+      </li>
+      <li><a href="#"
+          class="block px-4 py-3 text-[#555] text-base font-medium transition-all duration-300 hover:text-primary hover:bg-gray-100 md:px-0 md:py-0 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary">Portfolio</a>
+      </li>
+      <li><a href="#"
+          class="block px-4 py-3 text-[#555] text-base font-medium transition-all duration-300 hover:text-primary hover:bg-gray-100 md:px-0 md:py-0 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary">Contact</a>
+      </li>
+    </ul>
+    <div class="nav-right flex items-center gap-4">
+      <div class="nav-cta">
+        <a href="#"
+          class="contact-button bg-gradient-to-r from-[#ec6b3c] via-[#f37021] via-[#aa2354] via-[#3e4bd3] via-[#00a86b] to-[#d4d700] text-white px-5 py-2.5 rounded-md no-underline font-bold transition-opacity duration-300 hover:opacity-85 bg-[length:200%_auto]">Contact
+          Us</a>
       </div>
-      <ul class="hidden md:flex list-none gap-8">
-        <li><a href="#"
-            class="no-underline text-[#555] text-base font-medium transition-all duration-300 border-b-2 border-transparent hover:text-primary hover:border-primary">Home</a>
-        </li>
-        <li><a href="#"
-            class="no-underline text-[#555] text-base font-medium transition-all duration-300 border-b-2 border-transparent hover:text-primary hover:border-primary">About</a>
-        </li>
-        <li><a href="#"
-            class="no-underline text-[#555] text-base font-medium transition-all duration-300 border-b-2 border-transparent hover:text-primary hover:border-primary">Services</a>
-        </li>
-        <li><a href="#"
-            class="no-underline text-[#555] text-base font-medium transition-all duration-300 border-b-2 border-transparent hover:text-primary hover:border-primary">Portfolio</a>
-        </li>
-        <li><a href="#"
-            class="no-underline text-[#555] text-base font-medium transition-all duration-300 border-b-2 border-transparent hover:text-primary hover:border-primary">Contact</a>
-        </li>
-      </ul>
-      <div class="nav-right flex items-center gap-4">
-        <div class="nav-cta">
-          <a href="#"
-            class="contact-button bg-gradient-to-r from-[#ec6b3c] via-[#f37021] via-[#aa2354] via-[#3e4bd3] via-[#00a86b] to-[#d4d700] text-white px-5 py-2.5 rounded-md no-underline font-bold transition-opacity duration-300 hover:opacity-85 bg-[length:200%_auto]">Contact
-            Us</a>
-        </div>
-        <div class="md:hidden flex flex-col cursor-pointer gap-[5px] w-[30px] h-[24px] justify-center relative z-[1001]"
-          id="hamburger">
-          <span class="h-[3px] w-full bg-[#333] rounded-[2px] transition-all duration-400"></span>
-          <span class="h-[3px] w-full bg-[#333] rounded-[2px] transition-all duration-400"></span>
-          <span class="h-[3px] w-full bg-[#333] rounded-[2px] transition-all duration-400"></span>
-        </div>
+      <div class="md:hidden flex flex-col cursor-pointer gap-[5px] w-[30px] h-[24px] justify-center relative z-[1001]"
+        id="hamburger">
+        <span class="h-[3px] w-full bg-[#333] rounded-[2px] transition-all duration-400"></span>
+        <span class="h-[3px] w-full bg-[#333] rounded-[2px] transition-all duration-400"></span>
+        <span class="h-[3px] w-full bg-[#333] rounded-[2px] transition-all duration-400"></span>
       </div>
-    </nav>
-  </div>
+    </div>
+  </nav>
+  <!-- </div> -->
 
   <!-- Hero Section -->
   <section id="hero" class="relative h-screen w-full overflow-hidden">
-    <video id="bg-video" class="absolute top-0 left-0 h-full w-full object-cover z-[-1]" autoplay muted loop
-      poster="assets/images/video-poster.jpg">
+    <video id="bg-video" class="absolute top-0 left-0 h-full w-full object-cover z-[-1]" autoplay muted loop>
+      <!-- poster="assets/images/video-poster.jpg" -->
       <source src="assets/images/Welcome to.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -153,7 +158,8 @@
       </div>
       <div
         class="bg-white rounded-3xl shadow-lg p-6 w-full max-w-[320px] h-[60vh] flex flex-col items-center justify-start text-center">
-        <img src="assets/images/culture.png" alt="Expertise" loading="lazy" class="w-full h-[150px] object-cover rounded-2xl mb-4">
+        <img src="assets/images/culture.png" alt="Expertise" loading="lazy"
+          class="w-full h-[150px] object-cover rounded-2xl mb-4">
         <img src="assets/images/rangoli (1).png" alt="Icon" class="w-10 h-10 my-4">
         <h3 class="text-xl font-semibold mb-2 capitalize text-[#00bfff]">Expertise</h3>
         <p class="text-[0.95rem] leading-relaxed px-4 text-[#222]">Our team consists of industry experts with
@@ -606,11 +612,11 @@
       <input type="email" id="email-input" placeholder="Enter your email" required
         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
         class="px-4 py-2 border border-gray-300 rounded-md w-full sm:w-auto" />
-      <button type="submit" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600">
+      <button type="submit" id="signup-button" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600">
         Sign Up
       </button>
     </form>
-  </section>
+    <p id="signup-message" class="mt-4 text-sm h-5"></p> </section>
 
 
   <!-- Footer -->
@@ -649,9 +655,10 @@
 
   <!-- Font Awesome (Optional, for social icons) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-  
-  <body class="font-['Segoe_UI',Tahoma,Geneva,Verdana,sans-serif] overflow-x-hidden w-full scroll-smooth transition-opacity duration-500 opacity-0">
-  
-</body>
+
+  <body
+    class="font-['Segoe_UI',Tahoma,Geneva,Verdana,sans-serif] overflow-x-hidden w-full scroll-smooth transition-opacity duration-500 opacity-0">
+
+  </body>
 
 </html>
