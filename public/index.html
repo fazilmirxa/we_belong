@@ -4,6 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- <link href="/src/styles.css" rel="stylesheet"> -->
   <title>We Belong</title>
   <!-- Tailwind CSS -->
@@ -89,40 +92,55 @@
   <!-- Navigation Bar -->
   <!-- <div class="w-full h-20 flex justify-center"> -->
   <nav
-    class="fixed w-[95%] h-20 mx-auto mt-2.5 px-16 py-4 bg-white rounded-b-[20px] flex justify-between items-center z-[999] transition-all duration-400 shadow-sm transform translate-y-0">
+    class="fixed w-[95%] h-20 mx-auto mt-2.5 px-6 sm:px-10 md:px-16 py-4 bg-white rounded-b-[20px] flex justify-between items-center z-[999] transition-all duration-400 shadow-sm transform translate-y-0">
     <div class="nav-logo">
-      <img src="assets/images/Nav-logo.png" alt="Logo" class="h-[60px]">
+      <a href="#">
+        <img src="assets/images/Nav-logo.png" alt="Logo" class="h-[50px] md:h-[60px]">
+      </a>
     </div>
-    <ul
-      class="
-  hidden flex flex-col absolute w-full bg-white left-0 top-full shadow-lg py-2 z-[1000] md:flex-row md:relative md:w-auto md:bg-transparent md:shadow-none md:py-0 md:z-auto list-none gap-y-2 md:gap-x-8 ">
+    <ul id="navList" class="
+      hidden  
+      flex flex-col absolute w-full bg-white left-0 top-full shadow-lg py-2 z-[1000] 
+      md:flex md:flex-row md:items-center md:static md:w-auto md:bg-transparent md:shadow-none md:py-0 md:z-auto 
+      list-none gap-y-2 md:gap-x-6 lg:gap-x-8
+    ">
       <li><a href="#"
-          class="block px-4 py-3 text-[#555] text-base font-medium transition-all duration-300 hover:text-primary hover:bg-gray-100 md:px-0 md:py-0 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary">Home</a>
+          class="block px-4 py-3 text-dark-text text-base font-medium transition-all duration-300 
+               hover:text-primary hover:bg-misty-green-accent 
+               md:px-2 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px]">Home</a>
       </li>
       <li><a href="#"
-          class="block px-4 py-3 text-[#555] text-base font-medium transition-all duration-300 hover:text-primary hover:bg-gray-100 md:px-0 md:py-0 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary">About</a>
+          class="block px-4 py-3 text-dark-text text-base font-medium transition-all duration-300 
+               hover:text-primary hover:bg-misty-green-accent 
+               md:px-2 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px]">About</a>
       </li>
       <li><a href="#"
-          class="block px-4 py-3 text-[#555] text-base font-medium transition-all duration-300 hover:text-primary hover:bg-gray-100 md:px-0 md:py-0 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary">Services</a>
+          class="block px-4 py-3 text-dark-text text-base font-medium transition-all duration-300 
+               hover:text-primary hover:bg-misty-green-accent 
+               md:px-2 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px]">Services</a>
       </li>
       <li><a href="#"
-          class="block px-4 py-3 text-[#555] text-base font-medium transition-all duration-300 hover:text-primary hover:bg-gray-100 md:px-0 md:py-0 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary">Portfolio</a>
+          class="block px-4 py-3 text-dark-text text-base font-medium transition-all duration-300 
+               hover:text-primary hover:bg-misty-green-accent 
+               md:px-2 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px]">Portfolio</a>
       </li>
       <li><a href="#"
-          class="block px-4 py-3 text-[#555] text-base font-medium transition-all duration-300 hover:text-primary hover:bg-gray-100 md:px-0 md:py-0 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary">Contact</a>
+          class="block px-4 py-3 text-dark-text text-base font-medium transition-all duration-300 
+               hover:text-primary hover:bg-misty-green-accent 
+               md:px-2 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px]">Contact</a>
       </li>
     </ul>
     <div class="nav-right flex items-center gap-4">
-      <div class="nav-cta">
+      <div class="nav-cta hidden sm:block">
         <a href="#"
-          class="contact-button bg-gradient-to-r from-primary to-primary-dark text-light-text px-5 py-2.5 rounded-md no-underline font-bold transition-opacity duration-300 hover:opacity-85 bg-[length:200%_auto] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">Contact
+          class="contact-button bg-gradient-to-r from-primary-light via-primary to-primary-dark text-light-text px-5 py-2.5 rounded-md no-underline font-bold transition-opacity duration-300 hover:opacity-85 bg-[length:200%_auto] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">Contact
           Us</a>
       </div>
       <div class="md:hidden flex flex-col cursor-pointer gap-[5px] w-[30px] h-[24px] justify-center relative z-[1001]"
         id="hamburger">
-        <span class="h-[3px] w-full bg-[#333] rounded-[2px] transition-all duration-400"></span>
-        <span class="h-[3px] w-full bg-[#333] rounded-[2px] transition-all duration-400"></span>
-        <span class="h-[3px] w-full bg-[#333] rounded-[2px] transition-all duration-400"></span>
+        <span class="h-[3px] w-full bg-primary-dark rounded-[2px] transition-all duration-400"></span>
+        <span class="h-[3px] w-full bg-primary-dark rounded-[2px] transition-all duration-400"></span>
+        <span class="h-[3px] w-full bg-primary-dark rounded-[2px] transition-all duration-400"></span>
       </div>
     </div>
   </nav>
@@ -631,17 +649,26 @@
       <p class="mb-6 text-sm">Follow us on our social media channels to stay updated with our latest offerings and
         events.</p>
       <div class="flex justify-center gap-6 mb-6">
-        <a href="#" class="text-light-text hover:text-primary transition">
+        <a href="YOUR_FACEBOOK_LINK_HERE" target="_blank" rel="noopener noreferrer"
+          class="text-light-text hover:text-primary transition">
           <i class="fab fa-facebook-f text-xl"></i>
         </a>
-        <a href="#" class="text-light-text hover:text-primary transition">
+        <a href="YOUR_TWITTER_LINK_HERE" target="_blank" rel="noopener noreferrer"
+          class="text-light-text hover:text-primary transition">
           <i class="fab fa-twitter text-xl"></i>
         </a>
-        <a href="#" class="text-light-text hover:text-primary transition">
+        <a href="https://www.instagram.com/YOUR_INSTAGRAM_USERNAME/" target="_blank" rel="noopener noreferrer"
+          class="text-light-text hover:text-primary transition">
           <i class="fab fa-instagram text-xl"></i>
         </a>
-        <a href="#" class="text-light-text hover:text-primary transition">
+        <a href="YOUR_LINKEDIN_LINK_HERE" target="_blank" rel="noopener noreferrer"
+          class="text-light-text hover:text-primary transition">
           <i class="fab fa-linkedin-in text-xl"></i>
+        </a>
+        {/* */}
+        <a href="https://wa.me/YOUR_WHATSAPP_NUMBER" target="_blank" rel="noopener noreferrer"
+          class="text-light-text hover:text-primary transition">
+          <i class="fab fa-whatsapp text-xl"></i>
         </a>
       </div>
       <p class="text-sm text-misty-green-accent">&copy; 2025 Your Company Name. All rights reserved.</p>
