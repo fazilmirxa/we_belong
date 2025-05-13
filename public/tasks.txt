@@ -1,0 +1,23 @@
+* Need a add a light shadow to the naviagtion bar
+* The background video should play at once when user reload the page. (Fazil)
+* Ibrahim has to give the size of video.
+* Fazil have to work on Hero Section
+
+* Who we are section - Ibrahim needs to change the content and add the subtitle (take care of font)
+
+* Add one heading - What makes up different.
+
+* The width of the three cards of the (A Celebration in Kodagu
+) should be equal.
+
+* Need to work on the highlight section //
+
+* People Make the Place Section : add animation the card up-down
+
+* Opportunities for Brand Partnerships Section - Try to flip the second and third image.
+
+* Need to work on Sign up button
+
+* Add connect us on whatsapp
+
+Need to take care of the font and bg/icons
