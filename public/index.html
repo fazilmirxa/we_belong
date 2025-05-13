@@ -1,42 +1,696 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- <link href="/src/styles.css" rel="stylesheet"> -->
+  <title>We Belong</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'raleway': ['Raleway', 'sans-serif'],
+            'font1': ['Font1', 'sans-serif'],
+            'font2': ['Font2', 'sans-serif'],
+            'font3': ['Font3', 'sans-serif'],
+          },
+          colors: {
+            'primary': '#6A8948',        // Lush Paddy Green (Main Accent)
+            'primary-light': '#8AAD69',   // A lighter version of lush-paddy-green
+            'primary-dark': '#50723A',    // A darker version of lush-paddy-green
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+            'secondary-bg': '#F0F4F0',    // Cloud White (for light backgrounds)
+            'deep-green-bg': '#2E4030',   // Deep Forest Green (for dark backgrounds sections)
+            'misty-green-accent': '#A2B8A6', // Misty Green (for subtle accents or borders)
+            'earthy-text': '#5D4A3C',    // Earthy Brown (for some text if needed)
+            'light-text': '#F0F4F0',     // Cloud White (for text on dark backgrounds)
+            'dark-text': '#222222',
+            // 'primary': '#ff6600',
+            // 'primary-light': '#ff7043',
+            // 'primary-dark': '#ff5722',
+          },
+          animation: {
+            'float': 'float 3s ease-in-out infinite',
+            'fadeIn': 'fadeIn 1s ease-in-out',
+            'slideUpFade': 'slideUpFade 0.8s ease forwards',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUpFade: {
+              '0%': { transform: 'translateY(20px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* @import "tailwindcss"; */
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    /* Custom Font Loading */
+    @font-face {
+      font-family: 'Font1';
+      src: url('assets/fonts/BebasNeue-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Font2';
+      src: url('assets/fonts/Chillax-Variable.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Font3';
+      src: url('assets/fonts/Trirong-Italic.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+  </style>
+</head>
+
+<body class="font-['Segoe_UI',Tahoma,Geneva,Verdana,sans-serif] overflow-x-hidden w-full scroll-smooth">
+  <!-- Navigation Bar -->
+  <!-- <div class="w-full h-20 flex justify-center"> -->
+  <nav
+    class="fixed w-[95%] h-20 mx-auto mt-2.5 px-6 sm:px-10 md:px-16 py-4 bg-white rounded-b-[20px] flex justify-between items-center z-[999] transition-all duration-400 shadow-sm transform translate-y-0">
+    <div class="nav-logo">
+      <a href="#">
+        <img src="assets/images/Nav-logo.png" alt="Logo" class="h-[50px] md:h-[60px]">
+      </a>
+    </div>
+    <ul id="navList" class="
+      hidden  
+      flex flex-col absolute w-full bg-white left-0 top-full shadow-lg py-2 z-[1000] 
+      md:flex md:flex-row md:items-center md:static md:w-auto md:bg-transparent md:shadow-none md:py-0 md:z-auto 
+      list-none gap-y-2 md:gap-x-6 lg:gap-x-8
+    ">
+      <li><a href="#"
+          class="block px-4 py-3 text-dark-text text-base font-medium transition-all duration-300 
+               hover:text-primary hover:bg-misty-green-accent 
+               md:px-2 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px]">Home</a>
+      </li>
+      <li><a href="#"
+          class="block px-4 py-3 text-dark-text text-base font-medium transition-all duration-300 
+               hover:text-primary hover:bg-misty-green-accent 
+               md:px-2 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px]">About</a>
+      </li>
+      <li><a href="#"
+          class="block px-4 py-3 text-dark-text text-base font-medium transition-all duration-300 
+               hover:text-primary hover:bg-misty-green-accent 
+               md:px-2 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px]">Services</a>
+      </li>
+      <li><a href="#"
+          class="block px-4 py-3 text-dark-text text-base font-medium transition-all duration-300 
+               hover:text-primary hover:bg-misty-green-accent 
+               md:px-2 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px]">Portfolio</a>
+      </li>
+      <li><a href="#"
+          class="block px-4 py-3 text-dark-text text-base font-medium transition-all duration-300 
+               hover:text-primary hover:bg-misty-green-accent 
+               md:px-2 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px]">Contact</a>
+      </li>
+    </ul>
+    <div class="nav-right flex items-center gap-4">
+      <div class="nav-cta hidden sm:block">
+        <a href="#"
+          class="contact-button bg-gradient-to-r from-primary-light via-primary to-primary-dark text-light-text px-5 py-2.5 rounded-md no-underline font-bold transition-opacity duration-300 hover:opacity-85 bg-[length:200%_auto] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">Contact
+          Us</a>
+      </div>
+      <div class="md:hidden flex flex-col cursor-pointer gap-[5px] w-[30px] h-[24px] justify-center relative z-[1001]"
+        id="hamburger">
+        <span class="h-[3px] w-full bg-primary-dark rounded-[2px] transition-all duration-400"></span>
+        <span class="h-[3px] w-full bg-primary-dark rounded-[2px] transition-all duration-400"></span>
+        <span class="h-[3px] w-full bg-primary-dark rounded-[2px] transition-all duration-400"></span>
+      </div>
+    </div>
+  </nav>
+  <!-- </div> -->
+
+  <!-- Hero Section -->
+  <section id="hero" class="relative h-screen w-full overflow-hidden">
+    <video id="bg-video" class="absolute top-0 left-0 h-full w-full object-cover z-[-1]" autoplay muted loop>
+      <!-- poster="assets/images/video-poster.jpg" -->
+      <source src="assets/images/Welcome to.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </section>
+
+  <!-- Who We Are Section -->
+  <section id="who-we-are" class="bg-secondary-bg py-[100px] px-5 w-full">
+    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-10 max-w-[1100px] mx-auto">
+      <div class="w-full text-center md:text-left">
+        <h2 class="font-font1 text-2xl sm:text-[2.5rem] md:text-[2.8rem] lg:text-[3rem] mb-5 text-primary-dark">Who
+          We Are</h2>
+        <p
+          class="text-dark-text text-base sm:text-[1.05rem] md:text-[1.1rem] lg:text-[1.15rem] leading-relaxed px-[10px] md:px-0">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper
+          mattis, pulvinar dapibus leo. We believe in crafting experiences that engage and inspire.</p>
+      </div>
+      <div class="w-full text-center">
+        <img src="assets/images/Wo-we-are-section-image.png" alt="Who We Are"
+          class="max-w-full h-[250px] rounded-[20px] shadow-lg animate-float">
+      </div>
+    </div>
+  </section>
+
+  <!-- What Makes Us Different Section -->
+  <section id="what-makes-us-diferent" class="bg-secondary-bg py-10 w-full text-center">
+    <h2 class="font-font2 text-3xl md:text-4xl lg:text-5xl mb-12 text-primary-dark">WHAT MAKES US DIFFERENT</h2>
+    <div class="flex flex-row flex-wrap justify-center gap-16 pb-20 px-5">
+      <div
+        class="bg-white rounded-3xl shadow-lg p-6 w-full max-w-[320px] h-[60vh] flex flex-col items-center justify-start text-center">
+        <img src="assets/images/community.png" alt="Innovation" class="w-full h-[150px] object-cover rounded-2xl mb-4">
+        <img src="assets/images/teamwork (3).png" alt="Icon" class="w-10 h-10 my-4">
+        <h3 class="text-xl font-semibold mb-2 capitalize text-primary">Innovation</h3>
+        <p class="text-[0.95rem] leading-relaxed px-4 text-dark-text">We continuously strive to bring new ideas and
+          solutions to the table, keeping us at the forefront of our industry.</p>
+      </div>
+      <div
+        class="bg-white rounded-3xl shadow-lg p-6 w-full max-w-[320px] h-[60vh] flex flex-col items-center justify-start text-center">
+        <img src="assets/images/culture.png" alt="Expertise" loading="lazy"
+          class="w-full h-[150px] object-cover rounded-2xl mb-4">
+        <img src="assets/images/rangoli (1).png" alt="Icon" class="w-10 h-10 my-4">
+        <h3 class="text-xl font-semibold mb-2 capitalize text-primary">Expertise</h3>
+        <p class="text-[0.95rem] leading-relaxed px-4 text-dark-text">Our team consists of industry experts with {/*
+          Changed text color to use theme name */}
+          decades of combined experience, ensuring top-notch quality in everything we do.</p>
+      </div>
+      <div
+        class="bg-white rounded-3xl shadow-lg p-6 w-full max-w-[320px] h-[60vh] flex flex-col items-center justify-start text-center">
+        <img src="assets/images/celebration.png" alt="Customer Focus"
+          class="w-full h-[150px] object-cover rounded-2xl mb-4">
+        <img src="assets/images/cheers.png" alt="Icon" class="w-10 h-10 my-4">
+        <h3 class="text-xl font-semibold mb-2 capitalize text-primary">Customer Focus</h3>
+        <p class="text-[0.95rem] leading-relaxed px-4 text-dark-text">We prioritize our customers' needs and
+          satisfaction above all else, building long-lasting relationships based on trust and results.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="h-screen w-full">
+        <img src="/assets/images/full-width.jpg" alt="Full Width Image" class="h-full w-full object-cover">
+    </section> -->
+
+  <!-- Partnership Section -->
+  <section id="partnerships" class="bg-secondary-bg text-center py-12 px-4 w-full">
+    <h2 class="font-font3 text-3xl mb-4 text-primary-dark">Our Partnerships</h2>
+    <p class="text-dark-text text-base mb-12 leading-relaxed">Together with our trusted partners, we create exceptional
+      experiences.</p>
+    <div class="flex justify-center gap-16 flex-wrap">
+      <div
+        class="bg-white border border-misty-green-accent shadow-lg rounded-lg overflow-hidden w-[240px] flex flex-col justify-between">
+        <img src="assets/images/part1.png" alt="Partner 1" class="w-full h-[200px] object-cover"
+          style="clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 90%, 0 100%);">
+        <div class="p-5 text-base text-dark-text leading-relaxed">Partner One offers innovative solutions for
+          growth and success.</div>
+      </div>
+      <div
+        class="bg-white border border-misty-green-accent shadow-lg rounded-lg overflow-hidden w-[240px] flex flex-col justify-between">
+        <img src="assets/images/part2.png" alt="Partner 2" class="w-full h-[200px] object-cover"
+          style="clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 90%, 0 100%);">
+        <div class="p-5 text-base text-dark-text leading-relaxed">Partner Two specializes in cutting-edge technology
+          solutions.</div>
+      </div>
+      <div
+        class="bg-white border border-misty-green-accent shadow-lg rounded-lg overflow-hidden w-[240px] flex flex-col justify-between">
+        <img src="assets/images/part3.png" alt="Partner 3" class="w-full h-[200px] object-cover"
+          style="clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 90%, 0 100%);">
+        <div class="p-5 text-base text-dark-text leading-relaxed">Partner Three provides exceptional consulting
+          services.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Community Section -->
+  <section id="community" class="bg-secondary-bg py-16 px-5 text-center w-full">
+    <h2 class="text-[2.5rem] mb-10 text-primary-dark">Our Community</h2>
+    <div class="flex flex-wrap justify-center gap-8 max-w-[1200px] mx-auto">
+      <div
+        class="bg-white shadow-md rounded-2xl p-8 max-w-[300px] transition duration-300 text-left border-l-[6px] border-primary hover:translate-y-[-10px] hover:shadow-lg md:w-auto w-[90%]">
+        <h3 class="text-2xl mb-4 text-dark-text">For Individuals</h3> {/* Changed text color */}
+        <ul class="list-none p-0 m-0">
+          <li
+            class="text-base text-dark-text leading-relaxed mb-2.5 relative pl-5 before:content-['✔'] before:absolute before:left-0 before:text-primary before:font-bold before:text-[0.9rem]">
+            Personal growth opportunities</li>
+          <li
+            class="text-base text-dark-text leading-relaxed mb-2.5 relative pl-5 before:content-['✔'] before:absolute before:left-0 before:text-primary before:font-bold before:text-[0.9rem]">
+            Networking events</li>
+          <li
+            class="text-base text-dark-text leading-relaxed mb-2.5 relative pl-5 before:content-['✔'] before:absolute before:left-0 before:text-primary before:font-bold before:text-[0.9rem]">
+            Skill development workshops</li>
+        </ul>
+      </div>
+      <div
+        class="bg-white shadow-md rounded-2xl p-8 max-w-[300px] transition duration-300 text-left border-l-[6px] border-primary hover:translate-y-[-10px] hover:shadow-lg md:w-auto w-[90%]">
+        <h3 class="text-2xl mb-4 text-dark-text">For Businesses</h3>
+        <ul class="list-none p-0 m-0">
+          <li
+            class="text-base text-dark-text leading-relaxed mb-2.5 relative pl-5 before:content-['✔'] before:absolute before:left-0 before:text-primary before:font-bold before:text-[0.9rem]">
+            Partnership opportunities</li>
+          <li
+            class="text-base text-dark-text leading-relaxed mb-2.5 relative pl-5 before:content-['✔'] before:absolute before:left-0 before:text-primary before:font-bold before:text-[0.9rem]">
+            Industry connections</li>
+          <li
+            class="text-base text-dark-text leading-relaxed mb-2.5 relative pl-5 before:content-['✔'] before:absolute before:left-0 before:text-primary before:font-bold before:text-[0.9rem]">
+            Growth strategies</li>
+        </ul>
+      </div>
+      <div
+        class="bg-white shadow-md rounded-2xl p-8 max-w-[300px] transition duration-300 text-left border-l-[6px] border-primary hover:translate-y-[-10px] hover:shadow-lg md:w-auto w-[90%]">
+        <h3 class="text-2xl mb-4 text-dark-text">For Organizations</h3>
+        <ul class="list-none p-0 m-0">
+          <li
+            class="text-base text-dark-text leading-relaxed mb-2.5 relative pl-5 before:content-['✔'] before:absolute before:left-0 before:text-primary before:font-bold before:text-[0.9rem]">
+            Collaborative projects</li>
+          <li
+            class="text-base text-dark-text leading-relaxed mb-2.5 relative pl-5 before:content-['✔'] before:absolute before:left-0 before:text-primary before:font-bold before:text-[0.9rem]">
+            Resource sharing</li>
+          <li
+            class="text-base text-dark-text leading-relaxed mb-2.5 relative pl-5 before:content-['✔'] before:absolute before:left-0 before:text-primary before:font-bold before:text-[0.9rem]">
+            Community initiatives</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Be There Section -->
+  <section id="why-be-there" class="bg-secondary-bg py-20 px-5 text-center animate-fadeIn w-full">
+    <h2 class="text-[2.8rem] mb-2.5 text-primary-dark font-bold">Why Be There</h2>
+    <p class="text-xl text-dark-text mb-16 italic">Discover the benefits of joining our community</p>
+    <div class="flex flex-wrap justify-center gap-10 max-w-[1200px] mx-auto">
+      <div
+        class="bg-white shadow-lg rounded-[20px] p-8 max-w-[420px] text-left border-l-[6px] border-primary relative opacity-0 animate-slideUpFade">
+        <h3 class="text-[1.7rem] mb-5 text-dark-text border-b-2 border-primary pb-2.5">For Your Growth</h3>
+        <ul class="list-none pl-0">
+          <li
+            class="text-[1.05rem] text-dark-text leading-relaxed mb-3 pl-6 relative transition-all duration-300 hover:text-primary hover:translate-x-[5px] before:content-['★'] before:absolute before:left-0 before:text-primary before:text-base">
+            Access to educational resources</li>
+          <li
+            class="text-[1.05rem] text-dark-text leading-relaxed mb-3 pl-6 relative transition-all duration-300 hover:text-primary hover:translate-x-[5px] before:content-['★'] before:absolute before:left-0 before:text-primary before:text-base">
+            Expert guidance and mentorship</li>
+          <li
+            class="text-[1.05rem] text-dark-text leading-relaxed mb-3 pl-6 relative transition-all duration-300 hover:text-primary hover:translate-x-[5px] before:content-['★'] before:absolute before:left-0 before:text-primary before:text-base">
+            Community support and networking</li>
+        </ul>
+        <div class="flex flex-col space-y-4 mt-5">
+          <div
+            class="flex items-center gap-4 bg-misty-green-accent p-4 rounded-xl transition duration-300 hover:translate-y-[-5px] hover:shadow-md">
+            <span class="text-2xl text-primary transition duration-300 hover:scale-110">🌟</span>
+            <p class="m-0 text-[1.05rem] text-dark-text font-medium">Personalized coaching sessions tailored to your
+              goals</p>
+          </div>
+          <div
+            class="flex items-center gap-4 bg-misty-green-accent p-4 rounded-xl transition duration-300 hover:translate-y-[-5px] hover:shadow-md">
+            <span class="text-2xl text-primary transition duration-300 hover:scale-110">📈</span>
+            <p class="m-0 text-[1.05rem] text-dark-text font-medium">Career advancement opportunities with
+              industry leaders</p>
+          </div>
+          <div
+            class="flex items-center gap-4 bg-misty-green-accent p-4 rounded-xl transition duration-300 hover:translate-y-[-5px] hover:shadow-md">
+            <span class="text-2xl text-primary transition duration-300 hover:scale-110">🎓</span>
+            <p class="m-0 text-[1.05rem] text-dark-text font-medium">Exclusive workshops and skill development
+              programs</p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="bg-white shadow-lg rounded-[20px] p-8 max-w-[420px] text-left border-l-[6px] border-primary relative opacity-0 animate-slideUpFade"
+        style="animation-delay: 0.3s;">
+        <h3 class="text-[1.7rem] mb-5 text-dark-text border-b-2 border-primary pb-2.5">For Your Business</h3>
+        <ul class="list-none pl-0">
+          <li
+            class="text-[1.05rem] text-dark-text leading-relaxed mb-3 pl-6 relative transition-all duration-300 hover:text-primary hover:translate-x-[5px] before:content-['★'] before:absolute before:left-0 before:text-primary before:text-base">
+            Strategic partnerships with industry leaders</li>
+          <li
+            class="text-[1.05rem] text-dark-text leading-relaxed mb-3 pl-6 relative transition-all duration-300 hover:text-primary hover:translate-x-[5px] before:content-['★'] before:absolute before:left-0 before:text-primary before:text-base">
+            Recognition as a thought leader in your field</li>
+          <li
+            class="text-[1.05rem] text-dark-text leading-relaxed mb-3 pl-6 relative transition-all duration-300 hover:text-primary hover:translate-x-[5px] before:content-['★'] before:absolute before:left-0 before:text-primary before:text-base">
+            Market expansion and growth opportunities</li>
+        </ul>
+        <div class="flex flex-col space-y-4 mt-5">
+          <div
+            class="flex items-center gap-4 bg-misty-green-accent p-4 rounded-xl transition duration-300 hover:translate-y-[-5px] hover:shadow-md">
+            <span class="text-2xl text-primary transition duration-300 hover:scale-110">🤝</span>
+            <p class="m-0 text-[1.05rem] text-dark-text font-medium">Exclusive networking events with potential
+              partners</p>
+          </div>
+          <div
+            class="flex items-center gap-4 bg-misty-green-accent p-4 rounded-xl transition duration-300 hover:translate-y-[-5px] hover:shadow-md">
+            <span class="text-2xl text-primary transition duration-300 hover:scale-110">💼</span>
+            <p class="m-0 text-[1.05rem] text-dark-text font-medium">Premium business resources and market
+              insights</p>
+          </div>
+          <div
+            class="flex items-center gap-4 bg-misty-green-accent p-4 rounded-xl transition duration-300 hover:translate-y-[-5px] hover:shadow-md">
+            <span class="text-2xl text-primary transition duration-300 hover:scale-110">📊</span>
+            <p class="m-0 text-[1.05rem] text-dark-text font-medium">Data-driven strategies to boost your
+              revenue</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collaborate With Us Section -->
+  <section id="collaborate" class="bg-secondary-bg py-20 px-5 text-center animate-fadeIn w-full">
+    <h2 class="text-[2.8rem] text-primary-dark mb-2.5 font-bold">Collaborate With Us</h2>
+    <p class="text-xl text-dark-text italic mb-10">Join forces to create something amazing</p>
+    <div
+      class="max-w-[800px] mx-auto text-left bg-white p-10 rounded-[20px] shadow-lg opacity-0 translate-y-5 animate-slideUpFade">
+      <p class="text-[1.1rem] text-dark-text mb-5 leading-relaxed">We believe that collaboration is the key to
+        innovation and growth. By working together, we can achieve more than we ever could alone.</p>
+      <p class="text-base text-dark-text mb-8 italic">Our vision is to build a community of forward-thinking
+        individuals and organizations who share our passion for excellence.</p>
+      <ul class="list-none pl-0 mb-10">
+        <li
+          class="relative text-[1.05rem] pl-7 mb-4 text-dark-text leading-normal transition duration-300 hover:text-primary hover:translate-x-[6px] before:content-['✔'] before:absolute before:left-0 before:text-primary before:font-bold">
+          Leverage our extensive network and resources</li>
+        <li
+          class="relative text-[1.05rem] pl-7 mb-4 text-dark-text leading-normal transition duration-300 hover:text-primary hover:translate-x-[6px] before:content-['✔'] before:absolute before:left-0 before:text-primary before:font-bold">
+          Access expert knowledge in various domains</li>
+        <li
+          class="relative text-[1.05rem] pl-7 mb-4 text-dark-text leading-normal transition duration-300 hover:text-primary hover:translate-x-[6px] before:content-['✔'] before:absolute before:left-0 before:text-primary before:font-bold">
+          Participate in groundbreaking projects and initiatives</li>
+      </ul>
+      <a href="#"
+        class="inline-block bg-primary text-light-text text-[1.1rem] font-semibold py-3.5 px-7 rounded-[50px] no-underline transition-all duration-300 shadow-lg hover:bg-primary-dark hover:translate-y-[-3px] hover:shadow-xl">Start
+        Collaborating</a>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="bg-secondary-bg py-20 px-5 text-center w-full overflow-hidden">
+    <h2 class="text-[2.6rem] mb-2.5 text-primary-dark font-bold animate-fadeIn">People Make the Place</h2>
+    <p class="text-lg text-dark-text italic mb-12 animate-fadeIn" style="animation-delay: 0.2s;">Hear from our community
+      members</p>
+
+    <div class="relative max-w-[1000px] mx-auto">
+      <div class="testimonial-carousel flex flex-col gap-8 md:gap-12">
+        <div
+          class="bg-white p-8 rounded-[18px] shadow-lg text-[1.15rem] text-dark-text leading-relaxed relative w-full opacity-0 animate-slideInRight"
+          style="animation-delay: 0.3s; transform: translateX(40px);">
+          <div
+            class="absolute top-[-30px] left-1/2 transform -translate-x-1/2 bg-primary rounded-full w-16 h-16 flex items-center justify-center border-4 border-white shadow-md animate-pulse">
+            <span class="text-3xl text-light-text">👩‍💼</span>
+          </div>
+          <div
+            class="mt-6 relative before:content-['"'] before:text-[5rem] before:text-primary before:absolute before:top-[-45px] before:left-0 before:opacity-10 before:z-0">
+          <p class="italic mb-4 relative z-10">
+            "Joining this community transformed my business approach completely. The strategic partnerships I formed here led to a <span class="font-bold text-primary">37% increase</span> in my client base within just 3 months."
+          </p>
+          <div class="flex items-center justify-center mt-6 pt-4 border-t border-gray-200">
+            <div>
+              <p class="text-base font-bold text-dark-text mb-0">Sarah Johnson</p>
+              <p class="text-sm not-italic text-earthy-text">Marketing Director, TechInnovate</p>
+            </div>
+          </div>
+        </div>
+        <div class="absolute bottom-4 right-4 flex">
+          <span class="text-primary text-lg mr-1">★</span>
+          <span class="text-primary text-lg mr-1">★</span>
+          <span class="text-primary text-lg mr-1">★</span>
+          <span class="text-primary text-lg mr-1">★</span>
+          <span class="text-primary text-lg">★</span>
+        </div>
+      </div>
+      
+      <div class="bg-white p-8 rounded-[18px] shadow-lg text-[1.15rem] text-dark-text leading-relaxed relative w-full opacity-0 animate-slideInLeft"
+        style="animation-delay: 0.5s; transform: translateX(-40px);">
+        <div class="absolute top-[-30px] left-1/2 transform -translate-x-1/2 bg-primary rounded-full w-16 h-16 flex items-center justify-center border-4 border-white shadow-md animate-pulse">
+          <span class="text-3xl text-light-text">👨‍💻</span>
+        </div>
+        <div class="mt-6 relative before:content-['"'] before:text-[5rem] before:text-primary before:absolute before:top-[-45px] before:left-0 before:opacity-10 before:z-0">
+            <p class="italic mb-4 relative z-10">
+              "The mentorship program here was exactly what I needed to advance my career. I gained practical skills in
+              data analytics that helped me secure a <span class="font-bold text-primary">senior position</span> at my
+              dream company."
+            </p>
+            <div class="flex items-center justify-center mt-6 pt-4 border-t border-gray-200">
+              <div>
+                <p class="text-base font-bold text-dark-text mb-0">Miguel Hernandez</p>
+                <p class="text-sm not-italic text-earthy-text">Data Scientist, AnalyticsPro</p>
+              </div>
+            </div>
+          </div>
+          <div class="absolute bottom-4 right-4 flex">
+            <span class="text-primary text-lg mr-1">★</span>
+            <span class="text-primary text-lg mr-1">★</span>
+            <span class="text-primary text-lg mr-1">★</span>
+            <span class="text-primary text-lg mr-1">★</span>
+            <span class="text-primary text-lg">★</span>
+          </div>
+        </div>
+
+        <div
+          class="bg-white p-8 rounded-[18px] shadow-lg text-[1.15rem] text-dark-text leading-relaxed relative w-full opacity-0 animate-slideInRight"
+          style="animation-delay: 0.7s; transform: translateX(40px);">
+          <div
+            class="absolute top-[-30px] left-1/2 transform -translate-x-1/2 bg-primary rounded-full w-16 h-16 flex items-center justify-center border-4 border-white shadow-md animate-pulse">
+            <span class="text-3xl text-light-text">👩‍🎓</span>
+          </div>
+          <div class="mt-6 relative before:content-['"'] before:text-[5rem] before:text-primary before:absolute before:top-[-45px] before:left-0 before:opacity-10 before:z-0">
+          <p class="italic mb-4 relative z-10">
+            "As a startup founder, the resources and connections I' ve made here have been invaluable. Our company
+            secured <span class="font-bold text-primary">$500K in funding</span> after pitching to investors I
+            met at one of the networking events."
+            </p>
+            <div class="flex items-center justify-center mt-6 pt-4 border-t border-gray-200">
+              <div>
+                <p class="text-base font-bold text-dark-text mb-0">Priya Sharma</p>
+                <p class="text-sm not-italic text-earthy-text">CEO, EcoSolutions</p>
+              </div>
+            </div>
+          </div>
+          <div class="absolute bottom-4 right-4 flex">
+            <span class="text-primary text-lg mr-1">★</span>
+            <span class="text-primary text-lg mr-1">★</span>
+            <span class="text-primary text-lg mr-1">★</span>
+            <span class="text-primary text-lg mr-1">★</span>
+            <span class="text-primary text-lg">★</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-center mt-8 gap-2 animate-fadeIn" style="animation-delay: 1s;">
+        <button class="w-3 h-3 rounded-full bg-primary" aria-label="Testimonial 1"></button>
+        <button class="w-3 h-3 rounded-full bg-primary-light" aria-label="Testimonial 2"></button>
+        <button class="w-3 h-3 rounded-full bg-primary-light" aria-label="Testimonial 3"></button>
+      </div>
+
+      <div class="mt-12 opacity-0 animate-slideUpFade" style="animation-delay: 0.9s;">
+        <p class="text-dark-text text-lg mb-6">Join <span class="font-bold text-primary">350+ professionals</span> who
+          have already transformed their careers and businesses</p>
+        <a href="#join-now"
+          class="inline-block py-3 px-8 bg-primary text-light-text font-bold text-lg rounded-full shadow-lg transition-all duration-300 hover:bg-primary-dark hover:shadow-xl hover:-translate-y-1 transform">
+          Share Your Story
+        </a>
+      </div>
+    </div>
+    <style>
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(40px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-40px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideUpFade {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-slideInRight {
+        animation: slideInRight 0.8s ease forwards;
+      }
+
+      .animate-slideInLeft {
+        animation: slideInLeft 0.8s ease forwards;
+      }
+
+      .animate-fadeIn {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      .animate-slideUpFade {
+        animation: slideUpFade 0.8s ease forwards;
+      }
+
+      .animate-pulse {
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(1.05);
+        }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+    </style>
+  </section>
+
+
+  <!-- Stay Connected Section
+    <section id="stay-connected" class="bg-[#f4f4f9] py-20 px-5 text-center animate-fadeIn w-full">
+        <h2 class="text-[2.8rem] mb-5 text-[#222] font-bold">Stay Connected</h2>
+        <p class="text-lg text-[#666] mb-8 italic">Join our community and never miss an update</p>
+        <form class="flex justify-center gap-2.5 mb-8 flex-wrap">
+            <input type="email" id="email-input" placeholder="Your email address"
+                class="py-3 px-5 text-base rounded-lg border border-[#ddd] w-[300px] transition duration-300 focus:border-[#007BFF] focus:outline-none">
+            <img src="/assets/images/partner1.jpg" alt="Partner 1" class="w-full h-[200px] object-cover"
+                style="clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);">
+            <div class="p-4 bg-white">
+                <h3 class="text-lg font-semibold text-primary-dark mb-2">Partner One</h3>
+                <p class="text-sm text-[#444]">Innovative solutions with cutting-edge technology.</p>
+            </div>
+            </div>
+            <div
+                class="bg-transparent border border-white shadow-lg rounded-lg overflow-hidden w-[240px] flex flex-col justify-between">
+                <img src="/assets/images/partner2.jpg" alt="Partner 2" class="w-full h-[200px] object-cover"
+                    style="clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);">
+                <div class="p-4 bg-white">
+                    <h3 class="text-lg font-semibold text-[#00bfff] mb-2">Partner Two</h3>
+                    <p class="text-sm text-[#444]">Driving excellence with global collaboration.</p>
+                </div>
+            </div>
+            <div
+                class="bg-transparent border border-white shadow-lg rounded-lg overflow-hidden w-[240px] flex flex-col justify-between">
+                <img src="/assets/images/partner3.jpg" alt="Partner 3" class="w-full h-[200px] object-cover"
+                    style="clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);">
+                <div class="p-4 bg-white">
+                    <h3 class="text-lg font-semibold text-[#ff3e84] mb-2">Partner Three</h3>
+                    <p class="text-sm text-[#444]">Collaborating for a better, smarter future.</p>
+                </div>
+            </div>
+            </div>
+    </section> -->
+
+  <!-- Newsletter Signup Section -->
+  <section id="signup" class="bg-white py-12 px-6 text-center">
+    <h2 class="text-2xl font-bold mb-4 text-primary-dark">Stay Updated with We Belong</h2>
+    <form class="signup-form flex flex-col sm:flex-row justify-center items-center gap-4">
+      <input type="email" id="email-input" placeholder="Enter your email" required
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+        class="px-4 py-2 border border-gray-300 rounded-md w-full sm:w-auto focus:border-primary focus:ring-1 focus:ring-primary" />
+      <button type="submit" id="signup-button"
+        class="bg-primary text-light-text px-6 py-2 rounded hover:bg-primary-dark">
+        Sign Up
+      </button>
+    </form>
+    <p id="signup-message" class="mt-4 text-sm h-5"></p>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="bg-deep-green-bg text-light-text py-10 px-5 w-full text-center">
+    <div class="max-w-[1100px] mx-auto">
+      <h3 class="text-xl font-bold mb-4 font-raleway">Stay Connected</h3>
+      <p class="mb-6 text-sm">Follow us on our social media channels to stay updated with our latest offerings and
+        events.</p>
+      <div class="flex justify-center gap-6 mb-6">
+        <a href="YOUR_FACEBOOK_LINK_HERE" target="_blank" rel="noopener noreferrer"
+          class="text-light-text hover:text-primary transition">
+          <i class="fab fa-facebook-f text-xl"></i>
+        </a>
+        <a href="YOUR_TWITTER_LINK_HERE" target="_blank" rel="noopener noreferrer"
+          class="text-light-text hover:text-primary transition">
+          <i class="fab fa-twitter text-xl"></i>
+        </a>
+        <a href="https://www.instagram.com/YOUR_INSTAGRAM_USERNAME/" target="_blank" rel="noopener noreferrer"
+          class="text-light-text hover:text-primary transition">
+          <i class="fab fa-instagram text-xl"></i>
+        </a>
+        <a href="YOUR_LINKEDIN_LINK_HERE" target="_blank" rel="noopener noreferrer"
+          class="text-light-text hover:text-primary transition">
+          <i class="fab fa-linkedin-in text-xl"></i>
+        </a>
+        {/* */}
+        <a href="https://wa.me/YOUR_WHATSAPP_NUMBER" target="_blank" rel="noopener noreferrer"
+          class="text-light-text hover:text-primary transition">
+          <i class="fab fa-whatsapp text-xl"></i>
+        </a>
+      </div>
+      <p class="text-sm text-misty-green-accent">&copy; 2025 Your Company Name. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Hamburger Menu Script -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navList = document.querySelector('nav ul');
+
+    hamburger.addEventListener('click', () => {
+      navList.classList.toggle('hidden');
+    });
+  </script>
+
+  <!-- Font Awesome (Optional, for social icons) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+  <body
+    class="font-['Segoe_UI',Tahoma,Geneva,Verdana,sans-serif] overflow-x-hidden w-full scroll-smooth transition-opacity duration-500 opacity-0">
+
   </body>
+
 </html>
