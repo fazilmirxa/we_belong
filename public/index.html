@@ -1,42 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>We Belong India</title>
+  <link rel="stylesheet" href="styles.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Work+Sans:wght@400;500&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> -->
+</head>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+<body>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <video id="bg-video" autoplay muted playsinline loop>
+      <source src="assets/Welcome to.mp4" type="video/mp4" />
+      Your browser does not support HTML5 video.
+    </video>
+
+    <!-- Navbar -->
+    <div class="navigation">
+      <nav class="navbar">
+        <div class="nav-logo"><a href="#"><img src="assets/Nav-logo.png" alt="Logo"></a></div>
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#community">Events</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#gallery">Gallery</a></li> <!--update later -->
+        </ul>
+        <div class="nav-cta">
+          <a href="#contact" class="cta-button">Contact Us</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Who We Are Section -->
+  <section class="who-we-are" id="about">
+    <div class="container">
+      <div class="text-content animate-left">
+        <h2>Who We Are</h2>
+        <p><strong>We Belong</strong> creates vibrant spaces of belonging through rich cultural experiences. Our work is
+          rooted in heritage and driven by a deep commitment to community. Through immersive festivals and gatherings,
+          we celebrate stories told through food, music, art, and tradition—carefully curated to inspire connection,
+          honor identity, and spark joy across generations.</p>
+      </div>
+      <div class="image-content animate-right">
+        <img src="assets/Wo-we-are-section-image.png" alt="Event Image">
+      </div>
+    </div>
+  </section>
+
+  <!-- Community, Culture, Celebration Cards -->
+  <section class="card-section">
+    <div class="card">
+      <img src="assets/community.png" alt="Community Image" class="card-img">
+      <img src="assets/teamwork (3).png" alt="Icon" class="icon">
+      <h3 class="heading pink">Community</h3>
+      <p class="desc">We foster connections creating a sense of belonging and togetherness</p>
+    </div>
+
+    <div class="card">
+      <img src="assets/culture.png" alt="Culture Image" class="card-img">
+      <img src="assets/rangoli (1).png" alt="Icon" class="icon">
+      <h3 class="heading blue">Culture</h3>
+      <p class="desc">We celebrate indigenous identity & modern creativity</p>
+    </div>
+
+    <div class="card">
+      <img src="assets/celebration.png" alt="Celebration Image" class="card-img">
+      <img src="assets/cheers.png" alt="Icon" class="icon">
+      <h3 class="heading orange">Celebration</h3>
+      <p class="desc">We bring people together in joy, pride & play</p>
+    </div>
+  </section>
+
+  <!-- Partnership Opportunities -->
+  <section class="partnership-section">
+    <h1 class="main-heading">Opportunities for Brand Partnerships</h1>
+    <p class="sub-heading">We Belong offers meaningful, culture-rooted collaboration spaces. <br> Not just branding.
+      Brands can:</p>
+
+    <div class="partnership-cards">
+      <div class="partnership-card">
+        <img src="assets/part1.png" alt="Workshop" class="card-img">
+        <div class="card-text">Host workshops <br> or tasting zones</div>
+      </div>
+
+      <div class="partnership-card">
+        <div class="card-text">Set up <br> curated stalls</div>
+        <img src="assets/part2.png" alt="Stalls" class="card-img">
+      </div>
+
+      <div class="partnership-card">
+        <img src="assets/part3.png" alt="Sustainability" class="card-img">
+        <div class="card-text">Support <br> wellness and sustainability initiatives</div>
+      </div>
+
+      <div class="partnership-card">
+        <div class="card-text">Co-create content <br> that reflects their values</div>
+        <img src="assets/part4.png" alt="Content" class="card-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- Coorg Chapter Section3 -->
+  <section id="community">
+    <h2>A Celebration in Kodagu</h2>
+    <div class="community-cards">
+      <div class="community-card">
+        <h3>About the Festival</h3>
+        <ul>
+          <p>
+            Nestled in the lush hills of Madikeri, the first edition of <strong>We Belong</strong> is a celebration of
+            everything Kodagu represents — bold traditions, quiet strength, and music that rises with the mist.
+          </p>
+          <p>
+            Over two immersive days, you all move through performances, rituals, marketplaces and moments that open the
+            senses and settle the spirit.
+          </p>
+        </ul>
+      </div>
+
+      <div class="community-card">
+        <h3>Date & Venue</h3>
+        <ul>
+          <p><strong>Capitol Village, Coorg</strong></p>
+          <p><strong>October 11–12, 2025</strong></p>
+        </ul>
+      </div>
+
+      <div class="community-card">
+        <h3>What You Will Find</h3>
+        <ul style="text-align: left; padding-left: 20px;">
+          <li>Folk and fusion music performances</li>
+          <li>Traditional Kodava dance and rituals</li>
+          <li>Curated artisan markets</li>
+          <li>Local food and cocktails</li>
+          <li>Healing spaces, creative workshops, and soulful community circles</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- === Section 4: Why Be There === -->
+  <section id="why-be-there">
+    <h2 class="text-3xl font-semibold text-center mt-8">Why Be There</h2>
+    <p class="subtitle text-lg text-center text-gray-600">Not just an event. A weekend that moves you.</p>
+
+    <div class="why-cards">
+      <div class="why-card">
+        <h3>Whos It For</h3>
+        <ul>
+          <li>Young professionals</li>
+          <li>Artists, designers, and creatives</li>
+          <li>Travellers, culture lovers, and weekend seekers</li>
+          <li>Families looking for soulful experiences</li>
+          <li>Anyone who craves meaning, not just entertainment</li>
+        </ul>
+      </div>
+
+      <div class="why-card highlights">
+        <h3>Highlights</h3>
+        <div class="highlight-grid">
+          <div class="highlight-item">
+            <span class="icon">🎭</span>
+            <p>Immersive Cultural Performances</p>
+          </div>
+          <div class="highlight-item">
+            <span class="icon">🎶</span>
+            <p>Craft Cocktails & Music Stages</p>
+          </div>
+          <div class="highlight-item">
+            <span class="icon">👐</span>
+            <p>Hands-On Workshops & Healing Spaces</p>
+          </div>
+          <div class="highlight-item">
+            <span class="icon">🍲</span>
+            <p>Local Food & Artisan Markets</p>
+          </div>
+          <div class="highlight-item">
+            <span class="icon">🧘</span>
+            <p>Soulful Community Vibes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === Section 5: Collaborate With Us === -->
+  <section id="collaborate">
+    <h2>Collaborate With Us</h2>
+    <p class="tagline">Your brand, in rhythm with culture.</p>
+
+    <div class="collab-content">
+      <p class="lead-in">Want your brand to belong here too?<br>
+        We’re inviting <strong>co-creators</strong>—brands that care about community, creativity, and authentic
+        engagement.
+      </p>
+      <p class="vision">Lets build something thats not just seen but remembered.</p>
+
+      <ul class="collab-list">
+        <li>Host workshops or tasting zones</li>
+        <li>Set up curated stalls</li>
+        <li>Support wellness and sustainability initiatives</li>
+        <li>Co-create content that reflects your values</li>
+      </ul>
+
+      <a href="#partnership-form" class="cta-button">Partner With Us</a>
+    </div>
+  </section>
+
+  <!-- === Section 6: People Make the Place === -->
+  <section id="testimonials">
+    <h2>People Make the Place</h2>
+    <p class="section-intro">Heres what it felt like.</p>
+
+    <div class="quotes-container">
+      <blockquote class="quote-card">
+        “There was something deeply grounding about it. Like culture with a heartbeat.”
+      </blockquote>
+      <blockquote class="quote-card">
+        “I went for the music. I stayed for the energy.”
+      </blockquote>
+      <blockquote class="quote-card">
+        “It reminded me why community matters and how good it feels to be part of one.”
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- === Section 7: Stay Connected === -->
+  <section id="stay-connected">
+    <h2>You belong here. Start with a hello.</h2>
+    <p class="intro-text">Join our growing circle of community members, artists, collaborators, and culture seekers. Get
+      early access to line-ups, stories, and behind-the-scenes moments.</p>
+
+    <div class="signup-form">
+      <input type="email" placeholder="Enter your email..." id="email-input">
+      <button type="submit">Sign Up</button>
+    </div>
+
+    <div class="social-media">
+      <h3>Follow Us:</h3>
+      <div class="social-icons">
+        <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- === Section 8: Footer === -->
+  <footer id="footer">
+    <p>Belonging is a rhythm you remember, even when the music fades.</p>
+    <ul class="footer-links">
+      <li><a href="mailto:fazilhussain6397@gmail.com">fazilhussain6397@gmail.com</a></li>
+      <li><a href="#">Capitol Village Resort, Madikeri</a></li>
+      <li><a href="#">Terms & Conditions</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+    </ul>
+    <!-- <div class="footer-social-icons">
+      <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+    </div> -->
+  </footer>
+
+
+  <script src="script.js"></script>
+</body>
+
 </html>
