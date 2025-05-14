@@ -10,7 +10,6 @@
   <!-- <link href="/src/styles.css" rel="stylesheet"> -->
   <title>We Belong</title>
   <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -27,10 +26,10 @@
             'primary-dark': '#50723A',    // A darker version of lush-paddy-green
 
             'secondary-bg': '#F0F4F0',    // Cloud White (for light backgrounds)
-            'deep-green-bg': '#2E4030',   // Deep Forest Green (for dark backgrounds sections)
+            'deep-green-bg': '#2E4030',    // Deep Forest Green (for dark backgrounds sections)
             'misty-green-accent': '#A2B8A6', // Misty Green (for subtle accents or borders)
-            'earthy-text': '#5D4A3C',    // Earthy Brown (for some text if needed)
-            'light-text': '#F0F4F0',     // Cloud White (for text on dark backgrounds)
+            'earthy-text': '#5D4A3C',      // Earthy Brown (for some text if needed)
+            'light-text': '#F0F4F0',       // Cloud White (for text on dark backgrounds)
             'dark-text': '#222222',
             // 'primary': '#ff6600',
             // 'primary-light': '#ff7043',
@@ -58,9 +57,40 @@
         }
       }
     }
+
+    const navbar = document.getElementById('navbar');
+    const navList = document.getElementById('navList');
+    const hamburger = document.getElementById('hamburger');
+    const hamburgerLines = document.querySelectorAll('.hamburger-line');
+    let lastScrollTop = 0;
+
+    window.addEventListener('scroll', function () {
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop) {
+        navbar.style.transform = 'translateY(-100%)';
+      } else {
+        navbar.style.transform = 'translateY(0)';
+      }
+      lastScrollTop = scrollTop;
+    });
+
+    hamburger.addEventListener('click', () => {
+      navList.classList.toggle('open'); // Use 'open' class consistently
+      hamburgerLines.forEach((line, index) => {
+        if (index === 0) {
+          line.classList.toggle('rotate-45');
+          line.classList.toggle('translate-y-[9px]');
+        } else if (index === 1) {
+          line.classList.toggle('opacity-0');
+        } else if (index === 2) {
+          line.classList.toggle('rotate-[-45deg]');
+          line.classList.toggle('translate-y-[-9px]');
+        }
+      });
+    });
   </script>
   <style>
-    /* @import "tailwindcss"; */
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
     /* Custom Font Loading */
     @font-face {
@@ -84,7 +114,42 @@
       font-style: normal;
     }
 
-    @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+    #navList {
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
+
+    #navList.open {
+      transform: translateY(0);
+      opacity: 1;
+      display: flex !important;
+      /* Ensure it's flex when open */
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideOut {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      to {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 
@@ -92,56 +157,53 @@
   <!-- Navigation Bar -->
   <!-- <div class="w-full h-20 flex justify-center"> -->
   <nav
-    class="fixed w-[95%] h-20 mx-auto mt-2.5 px-6 sm:px-10 md:px-16 py-4 bg-white rounded-b-[20px] flex justify-between items-center z-[999] transition-all duration-400 shadow-sm transform translate-y-0">
-    <div class="nav-logo">
+    class="fixed w-[95%] h-20 mx-auto mt-2.5 px-6 sm:px-10 md:px-16 py-4 bg-white rounded-b-[20px] flex justify-center items-center z-[999] transition-all duration-400 shadow-sm transform translate-y-0"
+    id="navbar">
+    <div class="nav-logo absolute left-6 sm:left-10 md:left-16">
       <a href="#">
         <img src="assets/images/Nav-logo.png" alt="Logo" class="h-[50px] md:h-[60px]">
       </a>
     </div>
     <ul id="navList" class="
-      hidden  
-      flex flex-col absolute w-full bg-white left-0 top-full shadow-lg py-2 z-[1000] 
-      md:flex md:flex-row md:items-center md:static md:w-auto md:bg-transparent md:shadow-none md:py-0 md:z-auto 
-      list-none gap-y-2 md:gap-x-6 lg:gap-x-8
+        hidden flex flex-col absolute w-full bg-white left-0 top-full shadow-lg py-4 z-[1000]
+        md:flex md:flex-row md:items-center md:static md:w-auto md:bg-transparent md:shadow-none md:py-0 md:z-auto
+        list-none gap-y-4 md:gap-x-6 lg:gap-x-8
+        items-center
     ">
       <li><a href="#"
-          class="block px-4 py-3 text-dark-text text-base font-medium transition-all duration-300 
-               hover:text-primary hover:bg-misty-green-accent 
-               md:px-2 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px]">Home</a>
+          class="block px-6 py-3 text-dark-text text-lg font-medium transition-all duration-300
+                       hover:text-primary hover:bg-misty-green-accent
+                       md:px-2 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px]">Home</a>
       </li>
       <li><a href="#"
-          class="block px-4 py-3 text-dark-text text-base font-medium transition-all duration-300 
-               hover:text-primary hover:bg-misty-green-accent 
-               md:px-2 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px]">About</a>
+          class="block px-6 py-3 text-dark-text text-lg font-medium transition-all duration-300
+                       hover:text-primary hover:bg-misty-green-accent
+                       md:px-2 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px]">About</a>
       </li>
       <li><a href="#"
-          class="block px-4 py-3 text-dark-text text-base font-medium transition-all duration-300 
-               hover:text-primary hover:bg-misty-green-accent 
-               md:px-2 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px]">Services</a>
+          class="block px-6 py-3 text-dark-text text-lg font-medium transition-all duration-300
+                       hover:text-primary hover:bg-misty-green-accent
+                       md:px-2 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px]">Services</a>
       </li>
       <li><a href="#"
-          class="block px-4 py-3 text-dark-text text-base font-medium transition-all duration-300 
-               hover:text-primary hover:bg-misty-green-accent 
-               md:px-2 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px]">Portfolio</a>
-      </li>
-      <li><a href="#"
-          class="block px-4 py-3 text-dark-text text-base font-medium transition-all duration-300 
-               hover:text-primary hover:bg-misty-green-accent 
-               md:px-2 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px]">Contact</a>
+          class="block px-6 py-3 text-dark-text text-lg font-medium transition-all duration-300
+                       hover:text-primary hover:bg-misty-green-accent
+                       md:px-2 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px]">Gallery</a>
       </li>
     </ul>
-    <div class="nav-right flex items-center gap-4">
+    <div class="nav-right absolute right-6 sm:right-10 md:right-16 flex items-center gap-4">
       <div class="nav-cta hidden sm:block">
         <a href="#"
-          class="contact-button bg-gradient-to-r from-primary-light via-primary to-primary-dark text-light-text px-5 py-2.5 rounded-md no-underline font-bold transition-opacity duration-300 hover:opacity-85 bg-[length:200%_auto] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">Contact
+          class="contact-button bg-gradient-to-r from-primary-light via-primary to-primary-dark text-light-text px-5 py-2.5 rounded-md no-underline font-bold transition-opacity duration-300 hover:opacity-85 bg-[length:200%_auto] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
+          style="background: linear-gradient(to right, #ec6b3c, #f37021, #aa2354, #3e4bd3, #00a86b, #d4d700); background-size: 200% auto;">Contact
           Us</a>
       </div>
-      <div class="md:hidden flex flex-col cursor-pointer gap-[5px] w-[30px] h-[24px] justify-center relative z-[1001]"
-        id="hamburger">
-        <span class="h-[3px] w-full bg-primary-dark rounded-[2px] transition-all duration-400"></span>
-        <span class="h-[3px] w-full bg-primary-dark rounded-[2px] transition-all duration-400"></span>
-        <span class="h-[3px] w-full bg-primary-dark rounded-[2px] transition-all duration-400"></span>
-      </div>
+      <button id="hamburger"
+        class="md:hidden flex flex-col cursor-pointer gap-[6px] w-[30px] h-[24px] justify-center relative z-[1001]">
+        <span class="hamburger-line h-[3px] w-full bg-primary-dark rounded-[2px] transition-all duration-400"></span>
+        <span class="hamburger-line h-[3px] w-full bg-primary-dark rounded-[2px] transition-all duration-400"></span>
+        <span class="hamburger-line h-[3px] w-full bg-primary-dark rounded-[2px] transition-all duration-400"></span>
+      </button>
     </div>
   </nav>
   <!-- </div> -->
@@ -191,8 +253,7 @@
           class="w-full h-[150px] object-cover rounded-2xl mb-4">
         <img src="assets/images/rangoli (1).png" alt="Icon" class="w-10 h-10 my-4">
         <h3 class="text-xl font-semibold mb-2 capitalize text-primary">Expertise</h3>
-        <p class="text-[0.95rem] leading-relaxed px-4 text-dark-text">Our team consists of industry experts with {/*
-          Changed text color to use theme name */}
+        <p class="text-[0.95rem] leading-relaxed px-4 text-dark-text">Our team consists of industry experts with
           decades of combined experience, ensuring top-notch quality in everything we do.</p>
       </div>
       <div
@@ -247,7 +308,7 @@
     <div class="flex flex-wrap justify-center gap-8 max-w-[1200px] mx-auto">
       <div
         class="bg-white shadow-md rounded-2xl p-8 max-w-[300px] transition duration-300 text-left border-l-[6px] border-primary hover:translate-y-[-10px] hover:shadow-lg md:w-auto w-[90%]">
-        <h3 class="text-2xl mb-4 text-dark-text">For Individuals</h3> {/* Changed text color */}
+        <h3 class="text-2xl mb-4 text-dark-text">For Individuals</h3>
         <ul class="list-none p-0 m-0">
           <li
             class="text-base text-dark-text leading-relaxed mb-2.5 relative pl-5 before:content-['✔'] before:absolute before:left-0 before:text-primary before:font-bold before:text-[0.9rem]">
@@ -665,7 +726,6 @@
           class="text-light-text hover:text-primary transition">
           <i class="fab fa-linkedin-in text-xl"></i>
         </a>
-        {/* */}
         <a href="https://wa.me/YOUR_WHATSAPP_NUMBER" target="_blank" rel="noopener noreferrer"
           class="text-light-text hover:text-primary transition">
           <i class="fab fa-whatsapp text-xl"></i>
@@ -675,22 +735,7 @@
     </div>
   </footer>
 
-  <!-- Hamburger Menu Script -->
-  <script>
-    const hamburger = document.getElementById('hamburger');
-    const navList = document.querySelector('nav ul');
-
-    hamburger.addEventListener('click', () => {
-      navList.classList.toggle('hidden');
-    });
-  </script>
-
   <!-- Font Awesome (Optional, for social icons) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-
-  <body
-    class="font-['Segoe_UI',Tahoma,Geneva,Verdana,sans-serif] overflow-x-hidden w-full scroll-smooth transition-opacity duration-500 opacity-0">
-
-  </body>
 
 </html>
