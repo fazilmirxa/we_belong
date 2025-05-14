@@ -7,9 +7,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- <link href="/src/styles.css" rel="stylesheet"> -->
   <title>We Belong</title>
-  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -89,6 +88,7 @@
       });
     });
   </script>
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
@@ -115,16 +115,27 @@
     }
 
     #navList {
+      background-color: white;
       transform: translateY(-100%);
       opacity: 0;
       transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
+
+    /* desktop view  */
+    @media (min-width: 768px) {
+      #navList {
+        transform: translateY(0);
+        opacity: 1;
+        background-color: transparent;
+      }
     }
 
     #navList.open {
       transform: translateY(0);
       opacity: 1;
       display: flex !important;
-      /* Ensure it's flex when open */
+      background-color: white;
+      z-index: 1000;
     }
 
     @keyframes slideIn {
@@ -150,6 +161,23 @@
         opacity: 0;
       }
     }
+
+    /* hamburger style  */
+    .hamburger-active .hamburger-line:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+
+    .hamburger-active .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-active .hamburger-line:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+
+    .nav-open {
+      display: flex;
+    }
   </style>
 </head>
 
@@ -164,45 +192,34 @@
         <img src="assets/images/Nav-logo.png" alt="Logo" class="h-[50px] md:h-[60px]">
       </a>
     </div>
-    <ul id="navList" class="
-        hidden flex flex-col absolute w-full bg-white left-0 top-full shadow-lg py-4 z-[1000]
-        md:flex md:flex-row md:items-center md:static md:w-auto md:bg-transparent md:shadow-none md:py-0 md:z-auto
-        list-none gap-y-4 md:gap-x-6 lg:gap-x-8
-        items-center
-    ">
-      <li><a href="#"
-          class="block px-6 py-3 text-dark-text text-lg font-medium transition-all duration-300
-                       hover:text-primary hover:bg-misty-green-accent
-                       md:px-2 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px]">Home</a>
-      </li>
-      <li><a href="#"
-          class="block px-6 py-3 text-dark-text text-lg font-medium transition-all duration-300
-                       hover:text-primary hover:bg-misty-green-accent
-                       md:px-2 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px]">About</a>
-      </li>
-      <li><a href="#"
-          class="block px-6 py-3 text-dark-text text-lg font-medium transition-all duration-300
-                       hover:text-primary hover:bg-misty-green-accent
-                       md:px-2 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px]">Services</a>
-      </li>
-      <li><a href="#"
-          class="block px-6 py-3 text-dark-text text-lg font-medium transition-all duration-300
-                       hover:text-primary hover:bg-misty-green-accent
-                       md:px-2 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px]">Gallery</a>
-      </li>
+    <ul id="navList" class="flex-col absolute w-full bg-white left-0 top-full shadow-lg py-4 z-[1000]
+         md:flex md:flex-row md:items-center md:static md:w-auto md:bg-transparent md:shadow-none md:py-0 md:z-auto
+         list-none gap-y-4 md:gap-x-6 lg:gap-x-8 items-center">
+
+      <li><a href="#" class="block px-6 py-3 text-lg font-bold transition-all duration-300
+           text-primary hover:scale-105 md:hover:translate-y-[-2px]">Home</a></li>
+
+      <li><a href="#" class="block px-6 py-3 text-lg font-bold transition-all duration-300
+           text-primary hover:scale-105 md:hover:translate-y-[-2px]">About</a></li>
+
+      <li><a href="#" class="block px-6 py-3 text-lg font-bold transition-all duration-300
+           text-primary hover:scale-105 md:hover:translate-y-[-2px]">Services</a></li>
+
+      <li><a href="#" class="block px-6 py-3 text-lg font-bold transition-all duration-300
+           text-primary hover:scale-105 md:hover:translate-y-[-2px]">Gallery</a></li>
     </ul>
+
     <div class="nav-right absolute right-6 sm:right-10 md:right-16 flex items-center gap-4">
       <div class="nav-cta hidden sm:block">
         <a href="#"
-          class="contact-button bg-gradient-to-r from-primary-light via-primary to-primary-dark text-light-text px-5 py-2.5 rounded-md no-underline font-bold transition-opacity duration-300 hover:opacity-85 bg-[length:200%_auto] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
-          style="background: linear-gradient(to right, #ec6b3c, #f37021, #aa2354, #3e4bd3, #00a86b, #d4d700); background-size: 200% auto;">Contact
+          class="contact-button bg-gradient-to-r from-[#ec6b3c] to-[#d4d700] text-white px-5 py-2.5 rounded-md no-underline font-bold transition-opacity duration-300 hover:opacity-85 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">Contact
           Us</a>
       </div>
       <button id="hamburger"
         class="md:hidden flex flex-col cursor-pointer gap-[6px] w-[30px] h-[24px] justify-center relative z-[1001]">
-        <span class="hamburger-line h-[3px] w-full bg-primary-dark rounded-[2px] transition-all duration-400"></span>
-        <span class="hamburger-line h-[3px] w-full bg-primary-dark rounded-[2px] transition-all duration-400"></span>
-        <span class="hamburger-line h-[3px] w-full bg-primary-dark rounded-[2px] transition-all duration-400"></span>
+        <span class="hamburger-line h-[3px] w-full bg-green-800 rounded-[2px] transition-all duration-400"></span>
+        <span class="hamburger-line h-[3px] w-full bg-green-800 rounded-[2px] transition-all duration-400"></span>
+        <span class="hamburger-line h-[3px] w-full bg-green-800 rounded-[2px] transition-all duration-400"></span>
       </button>
     </div>
   </nav>

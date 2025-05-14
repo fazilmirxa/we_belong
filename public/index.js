@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Hamburger menu toggle
   if (hamburger) {
     hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('open');
       hamburger.classList.toggle('active');
       navList.classList.toggle('hidden');
       navList.classList.toggle('flex');
