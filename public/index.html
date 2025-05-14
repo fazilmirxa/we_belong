@@ -20,6 +20,7 @@
             'font3': ['Font3', 'sans-serif'],
           },
           colors: {
+<<<<<<< design
             'primary': '#6A8948',        // Lush Paddy Green (Main Accent)
             'primary-light': '#8AAD69',   // A lighter version of lush-paddy-green
             'primary-dark': '#50723A',    // A darker version of lush-paddy-green
@@ -29,7 +30,19 @@
             'misty-green-accent': '#A2B8A6', // Misty Green (for subtle accents or borders)
             'earthy-text': '#5D4A3C',      // Earthy Brown (for some text if needed)
             'light-text': '#F0F4F0',       // Cloud White (for text on dark backgrounds)
+=======
+            'primary': '#6A8948',       
+            'primary-light': '#8AAD69',   
+            'primary-dark': '#50723A',
+
+            'secondary-bg': '#F0F4F0',    
+            'deep-green-bg': '#2E4030',  
+            'misty-green-accent': '#A2B8A6', 
+            'earthy-text': '#5D4A3C',     
+            'light-text': '#F0F4F0',      
+>>>>>>> master
             'dark-text': '#222222',
+            //
             // 'primary': '#ff6600',
             // 'primary-light': '#ff7043',
             // 'primary-dark': '#ff5722',
@@ -185,13 +198,19 @@
   <!-- Navigation Bar -->
   <!-- <div class="w-full h-20 flex justify-center"> -->
   <nav
+<<<<<<< design
     class="fixed w-[95%] h-20 mx-auto mt-2.5 px-6 sm:px-10 md:px-16 py-4 bg-white rounded-b-[20px] flex justify-center items-center z-[999] transition-all duration-400 shadow-sm transform translate-y-0"
     id="navbar">
     <div class="nav-logo absolute left-6 sm:left-10 md:left-16">
+=======
+    class="fixed w-[95%] h-20 mx-auto mt-2.5 px-4 sm:px-8 md:px-10 py-4 bg-white rounded-b-[20px] flex justify-between items-center z-[999] transition-all duration-300 shadow-lg border-b border-gray-200">
+    <div class="nav-logo flex-shrink-0">
+>>>>>>> master
       <a href="#">
-        <img src="assets/images/Nav-logo.png" alt="Logo" class="h-[50px] md:h-[60px]">
+        <img src="assets/images/Nav-logo.png" alt="Logo" class="h-[45px] md:h-[55px]">
       </a>
     </div>
+<<<<<<< design
     <ul id="navList" class="flex-col absolute w-full bg-white left-0 top-full shadow-lg py-4 z-[1000]
          md:flex md:flex-row md:items-center md:static md:w-auto md:bg-transparent md:shadow-none md:py-0 md:z-auto
          list-none gap-y-4 md:gap-x-6 lg:gap-x-8 items-center">
@@ -221,6 +240,56 @@
         <span class="hamburger-line h-[3px] w-full bg-green-800 rounded-[2px] transition-all duration-400"></span>
         <span class="hamburger-line h-[3px] w-full bg-green-800 rounded-[2px] transition-all duration-400"></span>
       </button>
+=======
+
+    <div class="flex items-center">
+      <ul id="navList" class="
+        hidden  
+        flex flex-col absolute w-full bg-white left-0 top-full shadow-lg py-3 z-[1000] border-t border-gray-100
+        md:flex md:flex-row md:items-center md:static md:w-auto md:bg-transparent md:shadow-none md:py-0 md:z-auto md:border-none
+        list-none gap-y-2 md:gap-x-5 lg:gap-x-7
+      ">
+        <li><a href="#"
+            class="block px-4 py-3 text-dark-text text-base font-medium rounded-md
+                 hover:text-primary hover:bg-misty-green-accent 
+                 md:px-3 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px] transition-all duration-300">Home</a>
+        </li>
+        <li><a href="#"
+            class="block px-4 py-3 text-dark-text text-base font-medium rounded-md
+                 hover:text-primary hover:bg-misty-green-accent 
+                 md:px-3 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px] transition-all duration-300">About</a>
+        </li>
+        <li><a href="#"
+            class="block px-4 py-3 text-dark-text text-base font-medium rounded-md
+                 hover:text-primary hover:bg-misty-green-accent 
+                 md:px-3 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px] transition-all duration-300">Services</a>
+        </li>
+        <li><a href="#"
+            class="block px-4 py-3 text-dark-text text-base font-medium rounded-md
+                 hover:text-primary hover:bg-misty-green-accent 
+                 md:px-3 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px] transition-all duration-300">Portfolio</a>
+        </li>
+        <li><a href="#"
+            class="block px-4 py-3 text-dark-text text-base font-medium rounded-md
+                 hover:text-primary hover:bg-misty-green-accent 
+                 md:px-3 md:py-2 md:hover:bg-transparent md:border-b-2 md:border-transparent md:hover:border-primary md:hover:text-primary-dark md:hover:translate-y-[-2px] transition-all duration-300">Contact</a>
+        </li>
+      </ul>
+
+      <div class="nav-right flex items-center gap-3 md:gap-4 md:ml-4 lg:ml-6">
+        <div class="nav-cta hidden sm:block">
+          <a href="#"
+            class="contact-button bg-gradient-to-r from-primary-light via-primary to-primary-dark text-light-text px-5 py-2.5 rounded-md no-underline font-bold transition-all duration-300 hover:opacity-90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">Contact
+            Us</a>
+        </div>
+        <div class="md:hidden flex flex-col cursor-pointer gap-[5px] w-[28px] h-[24px] justify-center relative z-[1001]"
+          id="hamburger">
+          <span class="h-[3px] w-full bg-primary-dark rounded-[2px] transition-all duration-400"></span>
+          <span class="h-[3px] w-full bg-primary-dark rounded-[2px] transition-all duration-400"></span>
+          <span class="h-[3px] w-full bg-primary-dark rounded-[2px] transition-all duration-400"></span>
+        </div>
+      </div>
+>>>>>>> master
     </div>
   </nav>
   <!-- </div> -->
